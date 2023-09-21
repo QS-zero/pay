@@ -4,6 +4,12 @@ spring:
     username: root
     password: Y012138rt
     url: jdbc:mysql://127.0.0.1:3306/mall?characterEncoding=utf-8&useSSL=false
+  rabbitmq:
+    addresses: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+
 
 logging:
   pattern:
@@ -21,4 +27,6 @@ wx:
   mchKey:
   notifyUrl:
   returnUrl:
+
+
 
