@@ -1,8 +1,7 @@
 package com.exercise.pay.controller;
 
-import com.exercise.pay.dao.PayInfoMapper;
 import com.exercise.pay.pojo.PayInfo;
-import com.exercise.pay.service.impl.PayService;
+import com.exercise.pay.service.impl.PayServiceImple;
 import com.lly835.bestpay.config.WxPayConfig;
 import com.lly835.bestpay.enums.BestPayTypeEnum;
 import com.lly835.bestpay.model.PayResponse;
@@ -21,7 +20,7 @@ import java.util.Map;
 @Slf4j
 public class PayController {
     @Autowired
-    private PayService payService;
+    private PayServiceImple payServiceImple;
 
     @Autowired
     private WxPayConfig wxPayConfig;
@@ -31,7 +30,7 @@ public class PayController {
                                @RequestParam("amount") BigDecimal amount,
                                @RequestParam("payType")BestPayTypeEnum bestPayTypeEnum){
         //向Server发送请求，得到订单号
-        PayResponse response = payService.create(orderId, amount, bestPayTypeEnum);
+        PayResponse response = payServiceImple.create(orderId, amount, bestPayTypeEnum);
 
         //加入Map中
         Map map = new HashMap<>();
@@ -49,7 +48,7 @@ public class PayController {
     @PostMapping("/notify")
     @ResponseBody
     public String asyncNotify(@RequestBody String notifyData){
-        return payService.asyncNotify(notifyData);
+        return payServiceImple.asyncNotify(notifyData);
 
     }
 
@@ -57,7 +56,7 @@ public class PayController {
     @ResponseBody
     public PayInfo queryByOrderId(@RequestParam String orderId) {
         log.info("查询支付记录...");
-        return payService.queryByOrderId(orderId);
+        return payServiceImple.queryByOrderId(orderId);
     }
 
 

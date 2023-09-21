@@ -1,6 +1,5 @@
 package com.exercise.pay.service.impl;
 
-import com.exercise.pay.PayApplication;
 import com.exercise.pay.PayApplicationTests;
 import com.lly835.bestpay.enums.BestPayTypeEnum;
 import org.junit.Test;
@@ -15,13 +14,13 @@ import java.math.BigDecimal;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 
-public class PayServiceTest extends PayApplicationTests {
+public class PayServiceImpleTest extends PayApplicationTests {
     @Autowired
-    private PayService payService;
+    private PayServiceImple payServiceImple;
 
     @Test
     public void create() {
-        payService.create("13131", BigDecimal.valueOf(0.01), BestPayTypeEnum.WXPAY_NATIVE);
+        payServiceImple.create("13131", BigDecimal.valueOf(0.01), BestPayTypeEnum.WXPAY_NATIVE);
 
     }
 }
